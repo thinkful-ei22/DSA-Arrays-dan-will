@@ -36,12 +36,13 @@ class Array {
     return memory.get(this.ptr + index);
   }
 
-  pop(){
-    if(this.length === 0){
-      throw new Error ('Empty array');
+  pop() {
+    if (this.length === 0) {
+      throw new Error('Index error');
     }
+    const value = memory.get(this.ptr + this.length - 1);
     this.length--;
-    return this.get(this.ptr + this.length-1);
+    return value;
   }
 
   insert(index, value){
@@ -74,14 +75,44 @@ function main() {
   //create an instance of the array class
   let arr = new Array();
 
-  //add an item to the array
+  // //add an item to the array
   // arr.push(3);
-  // arr.push(4);
+
+  // // What is the length, capacity and memory address of your array ?
+  // //-- Array { length: 1, _capacity: 3, ptr: 0 }
+
   // arr.push(5);
-  // arr.push(6);
+  // arr.push(15);
+
+  // //-- Array { length: 3, _capacity: 3, ptr: 0 }
+
+  // arr.push(19);
+
+  // // -- Array { length: 4, _capacity: 12, ptr: 3 }
+
+  // arr.push(45);
+  // arr.push(10);
+
+  // // What is the length, capacity and memory address of your array ? Explain the result of your program after adding the new lines of code
+  // //-- Array { length: 6, _capacity: 12, ptr: 3 }
+
+
   // arr.pop();
   // arr.pop();
   // arr.pop();
+
+  arr.push("tauhida");
+
+  // What is the length, capacity and address of your array ? Explain the result of your program after adding the new lines of code
+  // - Array { length: 3, _capacity: 12, ptr: 3 }
+
+  // Print the first item in the array arr.
+
+  // Empty the array and add just one item arr.push("tauhida");
+
+  // Print this one item that you just added.What is the result ? Can you explain your result ?
+
+  //   What is the purpose of the _resize() function in your Array class?
 
   console.log(arr);
 }
