@@ -36,6 +36,35 @@ class Array {
     return memory.get(this.ptr + index);
   }
 
+  pop(){
+    if(this.length === 0){
+      throw new Error ('Empty array');
+    }
+    this.length--;
+    return this.get(this.ptr + this.length-1);
+  }
+
+  insert(index, value){
+    if(index < 0 || index>=this.length){
+      throw new Error('wrong index');
+    }
+    if (this.length >= this._capacity){
+      this._resize((this.length+1) * Array.sizeRatio)
+    }
+    memory.copy(this.ptr + index+1, this.ptr + index, this.length - index);
+    memory.set(this.ptr + index, value);
+    this.length++;
+  }
+
+  remove(index) {
+    if (index < 0 || index >= this.length) {
+      throw new Error('wrong index');
+    }
+    
+    memory.copy(this.ptr + index, this.ptr + index + 1, this.length - index - 1);
+    this.length--;
+  }
+
 }
 
 function main() {
@@ -46,7 +75,13 @@ function main() {
   let arr = new Array();
 
   //add an item to the array
-  arr.push(3);
+  // arr.push(3);
+  // arr.push(4);
+  // arr.push(5);
+  // arr.push(6);
+  // arr.pop();
+  // arr.pop();
+  // arr.pop();
 
   console.log(arr);
 }
